@@ -5,7 +5,7 @@ namespace BetaHub.Auth.Service.Infrastructure.Context
 {
 	public class ApplicationDbContext : DbContext
 	{
-		public ApplicationDbContext(DbContextOptions option) : base(option)
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option)
 		{
 
 		}

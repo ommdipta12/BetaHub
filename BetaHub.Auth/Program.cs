@@ -3,6 +3,7 @@ using BetaHub.Auth.Middleware;
 using BetaHub.Auth.Service.Application;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +14,11 @@ builder.Host.AddLogConfig();
 builder.Services.AddInfraServices(builder.Configuration);
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// configuring Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Health check
 builder.Services.AddHealthChecks()
 	.AddSqlServer(builder.Configuration.GetConnectionString("Database")!, tags: ["sql-server"]);
 builder.Services.AddHealthChecksUI(opt =>
@@ -25,6 +27,22 @@ builder.Services.AddHealthChecksUI(opt =>
 		//opt.MaximumHistoryEntriesPerEndpoint(50);
 	})
 	.AddInMemoryStorage();
+
+//OpenTelemetry
+builder.Services.AddOpenTelemetry()
+	.WithMetrics(o =>
+	{
+		o.AddPrometheusExporter();
+		o.AddMeter(
+			"Microsoft.AspNetCore.Hosting",
+			"Microsoft.AspNetCore.Server.Kestrel");
+
+		o.AddAspNetCoreInstrumentation()
+		.AddHttpClientInstrumentation()
+		.AddRuntimeInstrumentation()
+		.AddPrometheusExporter();
+
+	});
 
 var app = builder.Build();
 
@@ -48,6 +66,7 @@ app.UseHealthChecksUI(options =>
 	options.UIPath = "/healthcheck";
 	//options.AddCustomStylesheet("./HealthCheck/Custom.css");
 });
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 app.UseAuthorization();
 
