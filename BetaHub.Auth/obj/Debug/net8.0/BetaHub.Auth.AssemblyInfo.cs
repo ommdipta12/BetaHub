@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BetaHub.Auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be697e92f5f2ea4abb5eb3baec08b56abce220d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7476bdca8df216d0bc18988ee3878c67ebd357cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("BetaHub.Auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BetaHub.Auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
