@@ -1,6 +1,8 @@
 using BetaHub.Auth.Helpers;
 using BetaHub.Auth.Middleware;
 using BetaHub.Auth.Service.Application;
+using Hangfire;
+using Hangfire.SqlServer;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using OpenTelemetry.Metrics;
@@ -17,6 +19,21 @@ builder.Services.AddControllers();
 // configuring Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Hangfire
+builder.Services.AddHangfire(configuration => configuration
+			.UseSimpleAssemblyNameTypeSerializer()
+			.UseRecommendedSerializerSettings()
+			.UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireDatabase"),
+			new SqlServerStorageOptions
+			{
+				CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+				SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+				QueuePollInterval = TimeSpan.Zero,
+				UseRecommendedIsolationLevel = true,
+				DisableGlobalLocks = true
+			}));
+builder.Services.AddHangfireServer();
 
 //Health check
 builder.Services.AddHealthChecks()
@@ -69,6 +86,8 @@ app.UseHealthChecksUI(options =>
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 app.UseAuthorization();
+
+app.UseHangfireDashboard();
 
 app.MapControllers();
 

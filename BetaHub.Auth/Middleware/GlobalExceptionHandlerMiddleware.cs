@@ -22,7 +22,7 @@ namespace BetaHub.Auth.Middleware
 			{
 				// Log the exception
 				Log.Error(ex, $"-> {context.Request.Path}");
-
+				Log.CloseAndFlush();
 				// Handle the exception
 				await HandleExceptionAsync(context, ex);
 			}
