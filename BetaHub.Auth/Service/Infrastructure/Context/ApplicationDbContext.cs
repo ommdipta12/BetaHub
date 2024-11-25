@@ -1,4 +1,6 @@
 ﻿using BetaHub.Auth.Model.Entities.Auth;
+using BetaHub.Auth.Model.Entities.Masters;
+using BetaHub.Auth.Model.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace BetaHub.Auth.Service.Infrastructure.Context
@@ -12,7 +14,7 @@ namespace BetaHub.Auth.Service.Infrastructure.Context
 
 		public DbSet<UserRegistration> Users { get; set; }
 
-		/*protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<RoleMaster>(builder =>
 			{
@@ -52,6 +54,6 @@ namespace BetaHub.Auth.Service.Infrastructure.Context
 					CreatedBy = 1
 				});
 			});
-		}*/
+		}
 	}
 }

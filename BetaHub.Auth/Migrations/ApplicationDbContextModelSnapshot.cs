@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetaHub.Auth.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,94 @@ namespace BetaHub.Auth.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("BetaHub.Auth.Model.Entities.Auth.UserRegistration", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("DeletedFlag")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("FailedCount")
+                        .HasColumnType("tinyint");
+
+                    b.Property<bool>("LockOutEnable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LoginType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mobile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UnlockTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("TblUserRegistration", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 11, 25, 10, 38, 10, 81, DateTimeKind.Local).AddTicks(4240),
+                            DeletedFlag = false,
+                            Email = "superadmin@betahub.com",
+                            FailedCount = (byte)0,
+                            LockOutEnable = false,
+                            LoginType = "pwd",
+                            Mobile = "9999999999",
+                            Name = "SUPERADMIN",
+                            Password = "",
+                            RoleId = 1,
+                            UserName = "superadmin"
+                        });
+                });
 
             modelBuilder.Entity("BetaHub.Auth.Model.Entities.Masters.RoleMaster", b =>
                 {
@@ -58,87 +146,6 @@ namespace BetaHub.Auth.Migrations
                         {
                             RoleId = 4,
                             Role = "USER"
-                        });
-                });
-
-            modelBuilder.Entity("BetaHub.Auth.Model.Entities.UserRegistration", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("DeletedFlag")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LoginType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mobile")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("TblUserRegistration", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 9, 14, 22, 6, 37, 866, DateTimeKind.Local).AddTicks(7220),
-                            DeletedBy = 0,
-                            DeletedFlag = false,
-                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "superadmin@betahub.com",
-                            LoginType = "pwd",
-                            Mobile = "9999999999",
-                            Name = "SUPERADMIN",
-                            Password = "",
-                            RoleId = 1,
-                            UpdatedBy = 0,
-                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "superadmin"
                         });
                 });
 #pragma warning restore 612, 618

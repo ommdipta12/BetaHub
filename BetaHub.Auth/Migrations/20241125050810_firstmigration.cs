@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BetaHub.Auth.Migrations
 {
     /// <inheritdoc />
-    public partial class Add_User : Migration
+    public partial class firstmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,13 +39,16 @@ namespace BetaHub.Auth.Migrations
                     Mobile = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LoginType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LockOutEnable = table.Column<bool>(type: "bit", nullable: false),
+                    FailedCount = table.Column<byte>(type: "tinyint", nullable: false),
+                    UnlockTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedFlag = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<int>(type: "int", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedBy = table.Column<int>(type: "int", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedBy = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,8 +68,8 @@ namespace BetaHub.Auth.Migrations
 
             migrationBuilder.InsertData(
                 table: "TblUserRegistration",
-                columns: new[] { "UserId", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedFlag", "DeletedOn", "Email", "LoginType", "Mobile", "Name", "Password", "RoleId", "UpdatedBy", "UpdatedOn", "UserName" },
-                values: new object[] { 1, 1, new DateTime(2024, 9, 14, 22, 6, 37, 866, DateTimeKind.Local).AddTicks(7220), 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "superadmin@betahub.com", "pwd", "9999999999", "SUPERADMIN", "", 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "superadmin" });
+                columns: new[] { "UserId", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedFlag", "DeletedOn", "Email", "FailedCount", "LockOutEnable", "LoginType", "Mobile", "Name", "Password", "RoleId", "UnlockTime", "UpdatedBy", "UpdatedOn", "UserName" },
+                values: new object[] { 1, 1, new DateTime(2024, 11, 25, 10, 38, 10, 81, DateTimeKind.Local).AddTicks(4240), null, false, null, "superadmin@betahub.com", (byte)0, false, "pwd", "9999999999", "SUPERADMIN", "", 1, null, null, null, "superadmin" });
         }
 
         /// <inheritdoc />
