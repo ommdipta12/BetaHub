@@ -1,10 +1,11 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Hosting;
+using Serilog;
 
-namespace BetaHub.Auth.Helpers
+namespace Aspire.AspireServiceDefault.Helpers
 {
 	public static class LogHelper
 	{
-		public static void AddLogConfig(this IHostBuilder hostBuilder)
+		public static void ConfigSeriLog(this IHostBuilder hostBuilder)
 		{
 			// Configure the log to be written to the wwwroot/logs folder
 			hostBuilder.UseSerilog((context, services, configuration) =>
