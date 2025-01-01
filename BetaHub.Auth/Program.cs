@@ -38,7 +38,7 @@ app.UseAuthorization();
 
 //app.UseHangfireDashboard();
 
-app.MapIdentityApi<IdentityUser>();
+app.MapGroup("/identity").MapIdentityApi<IdentityUser>();
 
 app.MapControllers();
 

@@ -33,10 +33,10 @@ namespace BetaHub.Auth.Service.Application
 			services.AddAuthorization();
 			services.AddIdentityApiEndpoints<IdentityUser>(opt =>
 			{
-				opt.Password.RequiredLength = 8;
+				opt.Password.RequiredLength = 4;
 				opt.User.RequireUniqueEmail = true;
 				opt.Password.RequireNonAlphanumeric = false;
-				opt.SignIn.RequireConfirmedEmail = true;
+				opt.SignIn.RequireConfirmedEmail = false;
 			}).AddEntityFrameworkStores<ApplicationDbContext>();
 
 			//Fluent validation
