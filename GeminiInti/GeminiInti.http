@@ -1,0 +1,6 @@
+@GeminiInti_HostAddress = http://localhost:5167
+
+GET {{GeminiInti_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireServiceDefault", "Asp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{3655D103-D37D-41B1-BF06-30E00810C568}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AI", "AI", "{E4ADD47C-2B16-49B6-BBE9-FACA6ACC4675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeminiInti", "GeminiInti\GeminiInti.csproj", "{E2CB22EE-431D-4DAB-9DC6-4C882168B879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{3655D103-D37D-41B1-BF06-30E00810C568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3655D103-D37D-41B1-BF06-30E00810C568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3655D103-D37D-41B1-BF06-30E00810C568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2CB22EE-431D-4DAB-9DC6-4C882168B879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2CB22EE-431D-4DAB-9DC6-4C882168B879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2CB22EE-431D-4DAB-9DC6-4C882168B879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2CB22EE-431D-4DAB-9DC6-4C882168B879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{0CA9831F-962E-417B-982F-E2332F0E7248} = {D873D665-AD98-410E-AA94-F46FB102BA65}
 		{EF0FD651-80E6-4FBE-9ACA-3BDA6E9D0A32} = {D873D665-AD98-410E-AA94-F46FB102BA65}
 		{3655D103-D37D-41B1-BF06-30E00810C568} = {3959E9F0-A66B-4D7B-B2B0-8F3FF7B8860A}
+		{E2CB22EE-431D-4DAB-9DC6-4C882168B879} = {E4ADD47C-2B16-49B6-BBE9-FACA6ACC4675}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEC65DAF-BEC4-48FA-AFE6-DA2632F1B3EC}
