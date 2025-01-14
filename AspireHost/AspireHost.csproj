@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BetaHub.Auth\BetaHub.Auth.csproj" />
+    <ProjectReference Include="..\GeminiInti\GeminiInti.csproj" />
     <ProjectReference Include="..\IdentityServer\IdentityServer.csproj" />
   </ItemGroup>
 
