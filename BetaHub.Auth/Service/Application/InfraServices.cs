@@ -1,8 +1,8 @@
 ﻿using BetaHub.Auth.Model.Options;
 using BetaHub.Auth.Service.Infrastructure.Context;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -30,6 +30,7 @@ namespace BetaHub.Auth.Service.Application
 				}
 			);
 
+			//Identity Services
 			services.AddAuthorization();
 			services.AddIdentityApiEndpoints<IdentityUser>(opt =>
 			{
@@ -38,6 +39,8 @@ namespace BetaHub.Auth.Service.Application
 				opt.Password.RequireNonAlphanumeric = false;
 				opt.SignIn.RequireConfirmedEmail = false;
 			}).AddEntityFrameworkStores<ApplicationDbContext>();
+			services.ConfigureOptions<MailOptionSetup>();
+			services.AddTransient<IEmailSender, EmailService>();
 
 			//Fluent validation
 			services.AddFluentValidationAutoValidation(options =>
